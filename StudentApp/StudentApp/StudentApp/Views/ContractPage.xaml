@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentApp.Views.ContractPage"
+             xmlns:viewModel="clr-namespace:StudentApp.ViewModels"
+             
+             >
+
+    <ContentPage.BindingContext>
+        <viewModel:ContractViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <StackLayout Grid.Row="0" BackgroundColor="Black" Padding="0,5,0,5">
+            <Frame BackgroundColor="#e6e6e6" VerticalOptions="FillAndExpand" CornerRadius="0" ></Frame>
+        </StackLayout>
+
+        <Label Grid.Row="0"  Text="Ugovori" FontSize="22" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold"/>
+
+        <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center"  VerticalOptions="Center">
+            <Frame BackgroundColor="#b3b3b3" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Scale="0.7">
+                <SearchBar TextChanged="SearchBar_TextChanged" Text="{Binding Keyword, Mode=TwoWay}" TextColor="White" Placeholder="Unesi naziv tvrtke" PlaceholderColor="White" Scale="1.1" ></SearchBar>
+            </Frame>
+        </StackLayout>
+
+        <BoxView Grid.Row="1" VerticalOptions="EndAndExpand" HeightRequest="2" Color="Black" />
+
+
+        <StackLayout Grid.Row="2" Orientation="Vertical" Padding="0" Margin="0">
+            <ListView ItemsSource="{Binding StudentContract}" BackgroundColor="White" HasUnevenRows="True"  SeparatorVisibility="None" ItemSelected="ListView_ItemSelected" x:Name="list">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            
+                          
+                              
+
+                            <StackLayout Orientation="Vertical" >
+                                <Grid ColumnSpacing="0" RowSpacing="0" Padding="5,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <Label Grid.Row="0" Grid.Column="0"
+                                        Text="Naziv tvrtke: "
+                                        
+                                        VerticalTextAlignment="Start"
+                                        TextColor="Black"
+                                       Margin="0,10,0,0"
+                                           LineBreakMode="NoWrap"
+                                           FontAttributes="Bold"
+                                        />
+
+                                    <Label Grid.Row="0" Grid.Column="1"
+                                        Text="{Binding BpNameTvrtka}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                       TextColor="DarkRed" 
+                                       LineBreakMode="WordWrap"
+                                        FontAttributes="Bold"
+                                           Margin="0,10,0,0"
+                                        />
+
+
+                                </Grid>
+
+
+                                <Grid ColumnSpacing="0" RowSpacing="0" Padding="5,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <Label Grid.Row="0" Grid.Column="0" 
+                                        Text="Datum izdavanja: "
+                                        
+                                        VerticalTextAlignment="Center"
+                                        TextColor="Black"
+                                       LineBreakMode="NoWrap"
+                                            FontAttributes="Bold"
+                                        />
+
+                                    <Label Grid.Row="0" Grid.Column="1"
+                                        Text="{Binding DatumIzdavanja, StringFormat='{0:dd.MM.yyyy.}'}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                       TextColor="DarkRed" 
+                                       LineBreakMode="WordWrap" 
+                                            FontAttributes="Bold"
+                                        />
+
+                                </Grid>
+
+
+
+
+                                <Grid ColumnSpacing="0" RowSpacing="0" Padding="5,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                   
+                                    </Grid.RowDefinitions>
+
+
+                                    <Label Grid.Row="0" Grid.Column="0" 
+                                        Text="Šifra tvrtke:  "
+                                        
+                                        VerticalTextAlignment="Center"
+                                        TextColor="Black"
+                                       LineBreakMode="NoWrap"
+                                            FontAttributes="Bold"
+                                        />
+
+                                    <Label Grid.Row="0" Grid.Column="1"
+                                        Text="{Binding BpCodeTvrtka}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                       TextColor="DarkRed" 
+                                       LineBreakMode="WordWrap" 
+                                            FontAttributes="Bold"
+                                        />
+
+                                </Grid>
+
+
+
+                                <Grid ColumnSpacing="0" RowSpacing="0" Padding="5,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                     
+                                    </Grid.RowDefinitions>
+
+
+                                    <Label Grid.Row="0" Grid.Column="0" 
+                                        Text="Neto iznos: "
+                                        
+                                        VerticalTextAlignment="Center"
+                                        TextColor="Black"
+                                       LineBreakMode="NoWrap"
+                                            FontAttributes="Bold"
+                                        />
+
+                                    <Label Grid.Row="0" Grid.Column="1"
+                                         Text="{Binding IznosNeto, StringFormat='{0:C2}'}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                       TextColor="DarkRed" 
+                                       LineBreakMode="WordWrap" 
+                                            FontAttributes="Bold"
+                                        />
+                                </Grid>
+
+
+
+                                <Grid ColumnSpacing="0" RowSpacing="0" Padding="5,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <Label Grid.Row="0" Grid.Column="0" 
+                                        Text="Isplaćeno: "
+                                        
+                                        VerticalTextAlignment="Center"
+                                        TextColor="Black"
+                                       LineBreakMode="NoWrap"
+                                            FontAttributes="Bold"
+                                           Margin="0,0,0,10"
+                                        />
+
+                                    <Label Grid.Row="0" Grid.Column="1"
+                                         Text="{Binding IsplacenoStudentu, StringFormat='{0:C2}'}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center"
+                                       TextColor="DarkRed" 
+                                       LineBreakMode="WordWrap" 
+                                            FontAttributes="Bold"
+                                           Margin="0,0,0,10"
+                                        />
+
+
+                                </Grid>
+                                
+                                    <StackLayout Grid.Row="1" Grid.ColumnSpan="2" >
+                                        <BoxView   VerticalOptions="EndAndExpand" HeightRequest="2" Color="#b3b3b3" />
+                                    </StackLayout>
+                                  
+                                
+                            </StackLayout>
+                                       
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+           
+        </StackLayout>
+
+        <ActivityIndicator Grid.RowSpan="3" Color="DarkRed" HorizontalOptions="Center" VerticalOptions="Center" IsRunning="{Binding Loading}" x:Name="loadActivity" ></ActivityIndicator>
+    </Grid>
+
+
+</ContentPage>

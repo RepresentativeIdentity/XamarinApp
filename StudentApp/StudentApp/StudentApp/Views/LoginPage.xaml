@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentApp.Views.LoginPage"
+             xmlns:ViewModels="clr-namespace:StudentApp.ViewModels"
+            NavigationPage.HasBackButton="False"
+            >
+
+
+    <ContentPage.BindingContext>
+        <ViewModels:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Clicked="Button_Clicked" Icon="exit.png" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+
+    <Grid BackgroundColor="#b3b3b3" RowSpacing="0" ColumnSpacing="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!-- Naslov / prvi dio -->
+        <StackLayout Grid.Row="0" Grid.ColumnSpan="3" BackgroundColor="White"></StackLayout>
+        <StackLayout Grid.Row="0" Grid.ColumnSpan="3" Orientation="Vertical" Padding="0,20,0,20">
+            <Label Text="Dobrodošli" TextColor="DarkRed" FontSize="45" FontAttributes="Bold" VerticalOptions="Center"  HorizontalOptions="CenterAndExpand"/>
+            <Label/>
+            <Label Text="Prijava" TextColor="Black" FontAttributes="Bold" FontSize="35"  VerticalOptions="Center" HorizontalOptions="Center" />
+        </StackLayout>
+
+    
+            <!--<Frame BackgroundColor="Red" Grid.Row="1" Grid.ColumnSpan="3" Margin="70,30,70,30" CornerRadius="10" OutlineColor="Black"></Frame>-->
+        <StackLayout Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="DarkRed"  Margin="40,30,40,30" Padding="5">
+            <Frame BackgroundColor="White" VerticalOptions="FillAndExpand" CornerRadius="10">
+
+            </Frame>
+        </StackLayout>
+   
+        <!-- Sredisnji dio / prijava-->
+        <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical" Padding="0,70,0,0" >
+
+           
+            <Label Text="Korisnička oznaka:" TextColor="Black" FontAttributes="Bold" FontSize="18" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Margin="60,0,0,0"/>
+            <Entry Placeholder="JMBAG" PlaceholderColor="DarkRed" Scale="1" TextColor="Black" Keyboard="Numeric" Text="{Binding StudentLoginInfo.jmbg, Mode=TwoWay}" Margin="60,0,60,2"/>
+
+            <Label Text="Lozinka:" TextColor="Black" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Margin="60,0,0,0"/>
+            <Entry Placeholder="Zaporka" PlaceholderColor="DarkRed" Scale="1" TextColor="Black" IsPassword="True" Margin="60,0,60,0"/>
+    
+        </StackLayout>
+
+
+
+
+        <StackLayout Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="White" Margin="0,70,0,0"></StackLayout>
+        <!--Gumbovi-->
+        <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="60,0,60,0" >
+            <Button Text="Prijavi se" Command="{Binding RestAccess}" TextColor="White" BorderRadius="10" HorizontalOptions="StartAndExpand" Scale="1"  BackgroundColor="DarkRed" />
+            <Button Text="Pomoć" Command="{Binding Help}"  TextColor="White" BorderRadius="10" HorizontalOptions="EndAndExpand" Scale="1" BackgroundColor="DarkRed" IsEnabled="True"/>
+           
+        </StackLayout>
+        <ActivityIndicator Grid.RowSpan="3" Grid.ColumnSpan="3" Color="DarkRed" HorizontalOptions="Center" VerticalOptions="Center" IsRunning="{Binding Loading}" x:Name="loadActivity" ></ActivityIndicator>
+        <Label  Grid.Row="2" Grid.ColumnSpan="3" Text="Za više informacija pritisnite tipku pomoć." TextColor="DarkRed" FontSize="Large" HorizontalOptions="Center" VerticalOptions="End" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,0,0,10" />
+    </Grid>
+
+
+</ContentPage>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="4" android:versionName="3.1" package="firstDesign.StudentApp" android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="15" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  
+ <!--dodano za notifikacije-->
+  <permission android:protectionLevel="signature" android:name="${applicationId}.permission.C2D_MESSAGE" />
+  <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
+  <!--kraj-->
+	<application android:label="StudentApp.Android" android:icon="@drawable/appIcon"></application>
+</manifest>

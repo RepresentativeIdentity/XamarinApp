@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:StudentApp"
+             x:Class="StudentApp.MainPage"
+             xmlns:ViewModels="clr-namespace:StudentApp.ViewModels"
+             Title="Student" 
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="Black"
+             >
+    
+ 
+
+    <ContentPage.BindingContext>
+        <ViewModels:MainViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="Zarada"  Clicked="Profit"></ToolbarItem>
+        <ToolbarItem Order="Secondary" Text="Ugovori" Clicked="Contracts"></ToolbarItem>
+        <!--<ToolbarItem Order="Secondary" Text="Dodatno" Command="{Binding TestPage}"></ToolbarItem>-->
+        <ToolbarItem Order="Secondary" Text="Odjava" Clicked="Logout" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+
+    <Grid BackgroundColor="Black" RowSpacing="0" ColumnSpacing="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- okvir za profil -->
+        <StackLayout Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="Black" Padding="0,5,0,5">
+            <Frame BackgroundColor="#e6e6e6" VerticalOptions="FillAndExpand" CornerRadius="0" ></Frame>
+        </StackLayout>
+
+
+        <!--<Image Grid.Column="0" Grid.Row="0"  x:Name="MyImage"  Scale="0.7" HeightRequest="0" WidthRequest="0"></Image>
+        <Image Grid.Column="0"  Grid.Row="0" x:Name="ImageSource" Source="https://xamarinexplorercom.files.wordpress.com/2017/09/unchecked.png" Scale="0.7879"/>-->
+
+        <Image Grid.Column="0" Grid.Row="0"  x:Name="MyImage"  Scale="0.7" HeightRequest="0" WidthRequest="0"></Image>
+        <Image Grid.Column="0"  Grid.Row="0" x:Name="ImageSource" Source="frame.png" Scale="0.74"/>
+
+
+        <!-- dio za ime i prezime -->
+        <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical" Padding="0,10,0,0" >
+            <Label Text="{Binding Ime}" TextColor="Black" FontAttributes="Bold" FontSize="24" />
+            <Label Text="{Binding Prezime}" TextColor="Black" FontAttributes="Bold" FontSize="24" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Padding="5,0,5,0" >
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Padding="5,0,5,0" >
+                <Label Text="Matični broj:" TextColor="Black"  FontAttributes="Bold"  VerticalTextAlignment="Center" FontSize="16"/>
+                <Label Text="{Binding MatBr}" TextColor="Black" FontAttributes="Bold"  VerticalTextAlignment="Center" FontSize="16"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Padding="5,0,5,0" >
+                <Label Text="JMBAG:" TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                <Label Text="{Binding JMBAG}" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+            </StackLayout>
+        </StackLayout>
+
+
+        <!-- podaci o studentu -->
+        <ScrollView Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,10,0,10">
+            <StackLayout>
+
+                <BoxView HeightRequest="2" Color="#b3b3b3" />
+                <StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="IBAN: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding IBANRacuna}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+
+                <BoxView HeightRequest="2" Color="#b3b3b3" />
+                <!--<StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="Matični broj: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding MatBr}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+                <BoxView HeightRequest="2" Color="#b3b3b3" />-->
+
+                <StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="OIB: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding OIB}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+                <BoxView HeightRequest="2" Color="#b3b3b3" />
+
+                <!--<StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="JMBAG: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding JMBAG}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+                <BoxView HeightRequest="2" Color="#b3b3b3" />-->
+
+                <StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="Valjanost članstva do: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <!--<Label Text="{Binding ServisClanstvoDoDatum, StringFormat='{0:dd.MM.yyyy.}' }" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>-->
+                    <Label Text="{Binding ServisClanstvoDoDatum}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+                <BoxView HeightRequest="2" Color="#b3b3b3" />
+
+                <StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="Ulica: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding Ulica}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding KucniBroj}" TextColor="DarkRed" FontAttributes="Bold" FontSize="16"/>
+                </StackLayout>
+                <BoxView HeightRequest="2" Color="#b3b3b3" />
+
+                <StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="Telefon: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding Telefon}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+                <BoxView HeightRequest="2" Color="#b3b3b3" />
+
+                <StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="Email: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding Mail}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+
+                <BoxView HeightRequest="2" Color="#b3b3b3" />
+                <StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="Prebivalište: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding MjestoStanovanja}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+                <BoxView HeightRequest="2" Color="#b3b3b3" />
+
+                <StackLayout Orientation="Horizontal" Padding="5,0,5,0" BackgroundColor="White" >
+                    <Label Text="Boravište: " TextColor="Black"  FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                    <Label Text="{Binding MjestoBoravista}" TextColor="DarkRed" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+                <BoxView HeightRequest="2" Color="#b3b3b3" />
+
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+
+
+
+</ContentPage>
